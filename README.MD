@@ -60,3 +60,28 @@ Task Manager - это полнофункциональное веб-прилож
 ```bash
 git clone https://github.com/kononukvladislaus/task-manager-app.git
 cd task-manager-app
+
+## 📸 Скриншоты
+1.png
+2.png
+
+### Требования:
+- Python 3.8 или выше (проверить: `python3 --version`)
+- pip (менеджер пакетов)
+
+### Пошаговая установка:
+
+1. Проверьте версию Python:
+```bash
+python3 --version  # должна быть 3.8 или выше
+
+## 🔌 API Документация
+
+Приложение предоставляет REST API для управления задачами. Все запросы 
+возвращают JSON.
+
+### 📥 Получить все задачи
+
+**Запрос:**
+```bash
+curl http://localhost:5000/api/tasks
