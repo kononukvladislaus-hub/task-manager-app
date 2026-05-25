@@ -149,5 +149,5 @@ def toggle_task(task_id):
 
 if __name__ == '__main__':
     init_db()
-    print("🚀 Запуск Task Manager на http://127.0.0.1:5000")
+    print("🚀 Task Manager running on http://0.0.0.0:5000")
     app.run(debug=True, host='0.0.0.0', port=5000)
