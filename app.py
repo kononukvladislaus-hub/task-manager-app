@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 import sqlite3
 from datetime import datetime
 import os
+DATABASE = os.environ.get('DATABASE_PATH', 'tasks.db')
 
 app = Flask(__name__)
 DATABASE = 'tasks.db'
