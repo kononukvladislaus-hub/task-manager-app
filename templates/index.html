@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager - Менеджер задач</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 Task Manager</h1>
+            <p class="subtitle">Управляйте своими задачами эффективно</p>
+        </header>
+
+        <div class="task-form">
+            <input type="text" id="taskTitle" placeholder="Название задачи..." maxlength="200">
+            <textarea id="taskDescription" placeholder="Описание (необязательно)..." rows="2"></textarea>
+            <button id="addTaskBtn" onclick="addTask()">➕ Добавить задачу</button>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterTasks('all')">Все</button>
+            <button class="filter-btn" onclick="filterTasks('active')">Активные</button>
+            <button class="filter-btn" onclick="filterTasks('completed')">Выполненные</button>
+        </div>
+
+        <div class="stats">
+            <span id="totalTasks">Всего: 0</span>
+            <span id="completedTasks">Выполнено: 0</span>
+        </div>
+
+        <div id="tasksList" class="tasks-list">
+            <!-- Задачи будут загружены здесь -->
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
