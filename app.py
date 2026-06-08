@@ -2,31 +2,23 @@ from flask import Flask, render_template, request, jsonify
 import sqlite3
 from datetime import datetime
 import os
-DATABASE = os.environ.get('DATABASE_PATH', 'tasks.db')
 
 app = Flask(__name__)
-DATABASE = 'tasks.db'
+
+# ИСПРАВЛЕНИЕ
+DATABASE = os.environ.get('DATABASE_PATH', 'tasks.db')
+
+# Автоматически создаем папку для базы данных
+db_dir = os.path.dirname(DATABASE)
+if db_dir and not os.path.exists(db_dir):
+    os.makedirs(db_dir, exist_ok=True)
+
 
 def get_db():
     """Подключение к базе данных"""
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     return conn
-
-def init_db():
-    """Инициализация базы данных"""
-    conn = get_db()
-    conn.execute('''
-        CREATE TABLE IF NOT EXISTS tasks (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            title TEXT NOT NULL,
-            description TEXT,
-            completed INTEGER DEFAULT 0,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-    conn.commit()
-    conn.close()
 
 @app.route('/')
 def index():
